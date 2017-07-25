@@ -96,6 +96,14 @@ namespace LINQed
                 .GroupBy(Customer => Customer.Bank).ToList()
                 .ForEach(x => Console.WriteLine($"{x.Key} has {x.Count()} millionaires!"));
 
+            banks
+                .Join(customers,
+                b => b.Symbol,
+                c => c.Bank,
+                (customer, bank) => new {customer.Name, bank.Name}
+                )
+                .Where(c => c.Balance > 999999.99)
+                .ForEach(CustomerAtBank => Console.WriteLine($"{CustomerAtBank.customer.name} at {CustomerAtBank.bank.name} ");
             // customers
             //     .Where(Customer => Customer.Balance > 999999.99)
             //     .Join(Customer => Customer.Bank == Banks.Symbol).ToList()
@@ -124,6 +132,12 @@ namespace LINQed
                     new Customer(){ Name="Sid Brown", Balance=49582.68, Bank="CITI"}
                 };
 
+        List<Bank> banks = new List<Bank>() {
+            new Bank(){ Name="First Tennessee", Symbol="FTB"},
+            new Bank(){ Name="Wells Fargo", Symbol="WF"},
+            new Bank(){ Name="Bank of America", Symbol="BOA"},
+            new Bank(){ Name="Citibank", Symbol="CITI"},
+        };
 
 
         /* As a light introduction to working with relational databases, this example works with two collections of 
@@ -155,13 +169,6 @@ namespace LINQed
         // Define a bank
 
         // Create some banks and store in a List
-        List<Bank> banks = new List<Bank>() {
-            new Bank(){ Name="First Tennessee", Symbol="FTB"},
-            new Bank(){ Name="Wells Fargo", Symbol="WF"},
-            new Bank(){ Name="Bank of America", Symbol="BOA"},
-            new Bank(){ Name="Citibank", Symbol="CITI"},
-
-        };
 
         // var millionaireReport = ...
 
