@@ -50,7 +50,7 @@ namespace LINQed
             {
                 15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
             };
-            Console.WriteLine("There are ", nombres.Count(), "numbers in this list.");
+            Console.WriteLine($"There are  {nombres.Count()} numbers in this list.");
 
             // How much money have we made?
             List<double> purchases = new List<double>()
@@ -58,7 +58,7 @@ namespace LINQed
                 2340.29, 745.31, 21.76, 34.03, 4786.45, 879.45, 9442.85, 2454.63, 45.65
             };
 
-            Console.WriteLine("Purchases = $", purchases.Sum());
+            Console.WriteLine($"Purchases = ${purchases.Sum()}");
 
             // What is our most expensive product?
             List<double> prices = new List<double>()
@@ -66,7 +66,7 @@ namespace LINQed
                 879.45, 9442.85, 2454.63, 45.65, 2340.29, 34.03, 4786.45, 745.31, 21.76
             };
 
-            Console.WriteLine("The maximum price is ", prices.Max());
+            Console.WriteLine($"The maximum price is {prices.Max()}");
 
             /*
                 Store each number in the following List until a perfect square
@@ -96,6 +96,10 @@ namespace LINQed
                 .GroupBy(Customer => Customer.Bank).ToList()
                 .ForEach(x => Console.WriteLine($"{x.Key} has {x.Count()} millionaires!"));
 
+            // customers
+            //     .Where(Customer => Customer.Balance > 999999.99)
+            //     .Join(Customer => Customer.Bank == Banks.Symbol).ToList()
+            //     .ForEach(y => Console.WriteLine($"{y.customer.name} at {y.bank.name}"));
         }
 
 
@@ -121,15 +125,18 @@ namespace LINQed
                 };
 
 
-        // ### Introduction to Joining Two Related Collections
 
-        // As a light introduction to working with relational databases, this example works with two collections of data - `banks` and `customers` - that are related through the `Bank` attribute on the customer. In that attribute, we store the abbreviation for a bank. However, we want to get the full name of the bank when we produce our output.
+        /* As a light introduction to working with relational databases, this example works with two collections of 
+        data - `banks` and `customers` - that are related through the `Bank` attribute on the customer. In that 
+        attribute, we store the abbreviation for a bank. However, we want to get the full name of the bank when we 
+        produce our output.
 
-        // This is called joining the collections together.
+        This is called joining the collections together.
 
-        // This exercise is also an introduction to producing anonymous objects as the result of the LINQ statement.
+        This exercise is also an introduction to producing anonymous objects as the result of the LINQ statement.
 
-        // Read the [Group Join](https://code.msdn.microsoft.com/LINQ-Join-Operators-dabef4e9#groupjoin) example to get started.
+        Read the [Group Join](https://code.msdn.microsoft.com/LINQ-Join-Operators-dabef4e9#groupjoin) example to 
+        get started. */
 
         /*
             TASK:
